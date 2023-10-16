@@ -1,0 +1,23 @@
+# Configurações do bot
+
+canais:
+  taverna: 1138807851788279908
+
+textos:
+  uma_hora: "**Quando o relógio bate à uma, todas as caveiras saem da tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  duas_horas: "**Quando o relógio bate às duas, todas as caveiras pintam as unhas** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  tres_horas: "**Quando o relógio bate às três, todas as caveiras imitam chinês** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  quatro_horas: "**Quando o relógio bate às quatro, todas as caveiras tiram retrato** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  cinco_horas: "**Quando o relógio bate às cinco, todas as caveiras apertam os cintos** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  seis_horas: "**Quando o relógio bate às seis, todas as caveiras jogam xadrez** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  sete_horas: "**Quando o relógio bate às sete, todas as caveiras jogam basquete** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  oito_horas: "**Quando o relógio bate às oito, todas as caveiras comem biscoito** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  nove_horas: "**Quando o relógio bate às nove, todas as caveiras se sacodem** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  dez_horas: "**Quando o relógio bate às dez, todas as caveiras comem pasteis** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  onze_horas: "**Quando o relógio bate às onze, todas as caveiras sobem no bonde** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  doze_horas: "**Quando o relógio bate às doze, todas as caveiras voltam pra tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+
+emojis:
+  sino: "\U0001F514"
+  caveira: "\U0001F480"
+

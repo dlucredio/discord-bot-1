@@ -1,0 +1,5 @@
+DISPLAY_NAME=Bruxa
+DESCRIPTION=Bruxa
+MAIN=main.py
+MEMORY=128
+VERSION=recommended
