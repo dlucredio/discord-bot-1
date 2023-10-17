@@ -20,50 +20,27 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 # Vamos configurar a tarefa da mensagem recorrente
-@tasks.loop(time=[datetime.time(hour=0), 
+@tasks.loop(time=[datetime.time(hour=16), 
+                  datetime.time(hour=17),
+                  datetime.time(hour=18),
+                  datetime.time(hour=19),
+                  datetime.time(hour=20),
+                  datetime.time(hour=21),
+                  datetime.time(hour=22),
+                  datetime.time(hour=23),
+                  datetime.time(hour=0),
                   datetime.time(hour=1),
                   datetime.time(hour=2),
-                  datetime.time(hour=3),
-                  datetime.time(hour=4),
-                  datetime.time(hour=5),
-                  datetime.time(hour=6),
-                  datetime.time(hour=7),
-                  datetime.time(hour=8),
-                  datetime.time(hour=9),
-                  datetime.time(hour=10),
-                  datetime.time(hour=11),
-                  datetime.time(hour=12)
+                  datetime.time(hour=3)
                   ])
 async def mensagemProgramada():
     now = datetime.datetime.now()
     current_hour_brazil = now.hour - 3
-    if current_hour_brazil > 11:
-        current_hour_brazil = current_hour_brazil - 11
+    if current_hour_brazil < 1:
+        current_hour_brazil = current_hour_brazil + 12
+    indice = current_hour_brazil - 12
 
-    if current_hour_brazil == 1:
-        texto = config['textos']['uma_hora']
-    elif current_hour_brazil == 2:
-        texto = config['textos']['duas_horas']
-    elif current_hour_brazil == 3:
-        texto = config['textos']['tres_horas']
-    elif current_hour_brazil == 4:
-        texto = config['textos']['quatro_horas']
-    elif current_hour_brazil == 5:
-        texto = config['textos']['cinco_horas']
-    elif current_hour_brazil == 6:
-        texto = config['textos']['seis_horas']
-    elif current_hour_brazil == 7:
-        texto = config['textos']['sete_horas']
-    elif current_hour_brazil == 8:
-        texto = config['textos']['oito_horas']
-    elif current_hour_brazil == 9:
-        texto = config['textos']['nove_horas']
-    elif current_hour_brazil == 10:
-        texto = config['textos']['dez_horas']
-    elif current_hour_brazil == 11:
-        texto = config['textos']['onze_horas']
-    elif current_hour_brazil == 0:
-        texto = config['textos']['doze_horas']
+    texto = config['textos']['tumba'][indice]
 
     await enviar_mensagem_com_reacao(client, config['canais']['taverna'], texto, config['emojis']['caveira'])
 
@@ -74,13 +51,15 @@ async def on_ready():
         mensagemProgramada.start()
         logging.info('Mensagem programada configurada!')
 
-# @client.event
-# async def on_message(message):
-#     if message.author == client.user:
-#         return
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
     
-#     if message.author.name == 'daniel.lucredio' or message.author.nm == 'lopestay':
-#         if message.content.startswith('É meia noite!'):
-#             await enviar_mensagem_com_reacao(client, config['mensagem_diaria']['canal'], config['mensagem_diaria']['texto'], config['mensagem_diaria']['emoji_reacao'])
+    if message.author.name == 'daniel.lucredio':
+        if message.content.startswith('Oi, Bruxa'):
+            await enviar_mensagem_com_reacao(client, config['canais']['taverna'], "Olá, mestre!", config['emojis']['caveira'])
+        if message.content.startswith('Bruxa, qual é o seu nome?'):
+            await enviar_mensagem_com_reacao(client, config['canais']['taverna'], "Meu nome é Hécate, ó grande mestre dos magos!", config['emojis']['caveira'])
 
 client.run(config_token['token_bot'], root_logger=True)
