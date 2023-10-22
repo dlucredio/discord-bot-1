@@ -1,5 +1,6 @@
 __pycache__
 .venv
 token.yml
+gspreadcredentials.json
 events.log
 *.zip

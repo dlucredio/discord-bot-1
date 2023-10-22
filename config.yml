@@ -1,24 +1,30 @@
 # Configurações do bot
 
-canais:
-  taverna: 1153050326040068197
+# Configurações gerais
+canal_comandos: 1165650503758270524
 
-textos:
-  tumba:
-    - "**Quando o relógio bate às doze, todas as caveiras voltam pra tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate à uma, todas as caveiras saem da tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às duas, todas as caveiras pintam as unhas** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às três, todas as caveiras imitam chinês** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às quatro, todas as caveiras tiram retrato** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às cinco, todas as caveiras apertam os cintos** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às seis, todas as caveiras jogam xadrez** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às sete, todas as caveiras jogam basquete** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às oito, todas as caveiras comem biscoito** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às nove, todas as caveiras se sacodem** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às dez, todas as caveiras comem pasteis** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
-    - "**Quando o relógio bate às onze, todas as caveiras sobem no bonde** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+# Configurações dos interativos programados
+interativos_programados:
+  arquivo_credenciais: gspreadcredentials.json
+  id_planilha: 1-2IObxd5h5_2AdFKORSz1qZgXKnyeSkNOfV6vbHTv3o
+  canal_preview_mensagens: 1165650503758270524
+  canal_preview_forum: 1165650616631185460
 
-emojis:
-  sino: "\U0001F514"
-  caveira: "\U0001F480"
-
+# Configurações das mensagens programadas
+mensagens_programadas:
+  diferenca_zonahoraria_utc: -3 # o sistema vai somar a diferença de zona horária
+  canal: 1138807851788279908
+  emoji_reacao: "\U0001F480" # caveira
+  #emoji_reacao:  "\U0001F514" # sino
+  texto_13h: "**Quando o relógio bate à uma, todas as caveiras saem da tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_14h: "**Quando o relógio bate às duas, todas as caveiras pintam as unhas** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_15h: "**Quando o relógio bate às três, todas as caveiras imitam chinês** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_16h: "**Quando o relógio bate às quatro, todas as caveiras tiram retrato** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_17h: "**Quando o relógio bate às cinco, todas as caveiras apertam os cintos** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_18h:  "**Quando o relógio bate às seis, todas as caveiras jogam xadrez** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_19h:  "**Quando o relógio bate às sete, todas as caveiras jogam basquete** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_20h:  "**Quando o relógio bate às oito, todas as caveiras comem biscoito** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_21h:  "**Quando o relógio bate às nove, todas as caveiras se sacodem** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_22h:  "**Quando o relógio bate às dez, todas as caveiras comem pasteis** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_23h:  "**Quando o relógio bate às onze, todas as caveiras sobem no bonde** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_0h: "**Quando o relógio bate às doze, todas as caveiras voltam pra tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
