@@ -21,7 +21,7 @@ canal_comandos = int(config['canal_comandos'])
 # Configuração do cliente Discord
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='$', intents=intents)
+bot = commands.Bot(command_prefix='$$', intents=intents)
 
 # Vamos configurar a tarefa da mensagem recorrente
 @tasks.loop(time=[datetime.time(hour=0),
@@ -65,12 +65,21 @@ async def mensagems_programadas():
 
         await enviar_mensagem_com_reacao(bot, config_msg['canal'], texto, config_msg['emoji_reacao'])
 
+# Vamos configurar a tarefa dos interativos recorrentes
+@tasks.loop(time=[datetime.time(hour=16, minute=30)])
+async def interativos_programados():
+    await publicar_hoje()
+
 @bot.event
 async def on_ready():
     logging.info(f'Bot logado como: {bot.user}')
     if not mensagems_programadas.is_running():
         mensagems_programadas.start()
-        logging.info('Mensagem de hora em hora configurada!')
+        logging.info('Mensagem de hora em hora configurada')
+
+    if not interativos_programados.is_running():
+        interativos_programados.start()
+        logging.info('Interativos programados configurados')
 
 @bot.command()
 async def ping(ctx):
@@ -80,27 +89,30 @@ async def ping(ctx):
 @bot.command()
 async def publicar_interativo(ctx):
     if pode_executar_comando(ctx):
-        now = datetime.datetime.now()
-        dia = now.day
-        mes = now.month
-        try:
-            await ctx.send(f'Publicando {dia}/{mes}, certo! Só um minuto...')
-            interativos_programados=config['interativos_programados']
-            gc = gspread.service_account(filename=interativos_programados['arquivo_credenciais'])
-            planilha = gc.open_by_key(interativos_programados['id_planilha'])
-            dados_postagem = ler_planilha_interativos(planilha=planilha, dia=dia, mes=mes)
-            canal_postagem = dados_postagem['canal']
-            await postar_interativo(bot=bot, canal=canal_postagem, dados_postagem=dados_postagem)
-            await ctx.send(f'Prontinho!')
-        except Exception as e:
-            if 'WorksheetNotFound' in str(e):
-                await ctx.send(f'Nada a postar em {dia}/{mes}')
-            elif 'index' in str(e) and 'not found' in str(e):
-                await ctx.send(f'Nada a postar em {dia}/{mes}')
-            else:
-                await ctx.send(f'{e}')
-            logging.error(e)
-            raise
+        await ctx.send(f'Publicando o interativo de hoje, só um minuto...')
+        await publicar_hoje()
+        await ctx.send(f'Prontinho!')
+
+async def publicar_hoje():
+    now = datetime.datetime.now()
+    dia = now.day
+    mes = now.month
+    try:
+        interativos_programados=config['interativos_programados']
+        gc = gspread.service_account(filename=interativos_programados['arquivo_credenciais'])
+        planilha = gc.open_by_key(interativos_programados['id_planilha'])
+        dados_postagem = ler_planilha_interativos(planilha=planilha, dia=dia, mes=mes)
+        canal_postagem = dados_postagem['canal']
+        await postar_interativo(bot=bot, canal=canal_postagem, dados_postagem=dados_postagem)
+    except Exception as e:
+        # if 'WorksheetNotFound' in str(e):
+        #     await ctx.send(f'Nada a postar em {dia}/{mes}')
+        # elif 'index' in str(e) and 'not found' in str(e):
+        #     await ctx.send(f'Nada a postar em {dia}/{mes}')
+        # else:
+        #     await ctx.send(f'{e}')
+        logging.error(e)
+        raise
 
 @bot.command()
 async def preview_interativo(ctx, diaMes):

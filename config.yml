@@ -2,7 +2,7 @@
 
 # Configurações gerais
 # Esse canal é onde o comandos serão executados. Não funciona em outro canal
-canal_comandos: 1165650503758270524
+canal_comandos: 1165648745149505637
 
 # Configurações dos interativos programados
 interativos_programados:
@@ -11,9 +11,9 @@ interativos_programados:
   # Id da planilha do google
   id_planilha: 1X5jQthT0-jQNm7DsdPeTh4kzk7e3tAhKP5afENpRgMc
   # Onde as mensagens de preview vão aparecer
-  canal_preview_mensagens: 1165650503758270524
+  canal_preview_mensagens: 1165648745149505637
   # Onde as threads do fórum vão aparecer
-  canal_preview_forum: 1165650616631185460
+  canal_preview_forum: 1165648927169712189
 
 # Configurações das mensagens programadas
 mensagens_programadas:
@@ -25,7 +25,7 @@ mensagens_programadas:
   diferenca_zonahoraria_utc: -3
 
   # Canal das mensagens programadas
-  canal: 1138807851788279908
+  canal: 1153050326040068197
 
   # Reação a ser adicionada às mensagens programadas
   emoji_reacao: "\U0001F480" # caveira
