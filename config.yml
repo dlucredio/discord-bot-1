@@ -1,21 +1,38 @@
 # Configurações do bot
 
 # Configurações gerais
+# Esse canal é onde o comandos serão executados. Não funciona em outro canal
 canal_comandos: 1165650503758270524
 
 # Configurações dos interativos programados
 interativos_programados:
+  # Arquivo com as credenciais da planilha do google
   arquivo_credenciais: gspreadcredentials.json
-  id_planilha: 1-2IObxd5h5_2AdFKORSz1qZgXKnyeSkNOfV6vbHTv3o
+  # Id da planilha do google
+  id_planilha: 1X5jQthT0-jQNm7DsdPeTh4kzk7e3tAhKP5afENpRgMc
+  # Onde as mensagens de preview vão aparecer
   canal_preview_mensagens: 1165650503758270524
+  # Onde as threads do fórum vão aparecer
   canal_preview_forum: 1165650616631185460
 
 # Configurações das mensagens programadas
 mensagens_programadas:
-  diferenca_zonahoraria_utc: -3 # o sistema vai somar a diferença de zona horária
+  # Dependendo de onde o bot vai estar hospedado, o fuso horário
+  # pode ser diferente.
+  # O sistema vai somar a diferença de zona horária
+  # Normalmente os sistemas consideram o fuso UTC (greenwich)
+  # Então o valor para o Brasil é -3
+  diferenca_zonahoraria_utc: -3
+
+  # Canal das mensagens programadas
   canal: 1138807851788279908
+
+  # Reação a ser adicionada às mensagens programadas
   emoji_reacao: "\U0001F480" # caveira
   #emoji_reacao:  "\U0001F514" # sino
+
+  # Textos a serem exibidos de hora em hora.
+  # Caso não tenha, nada será postado
   texto_13h: "**Quando o relógio bate à uma, todas as caveiras saem da tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
   texto_14h: "**Quando o relógio bate às duas, todas as caveiras pintam as unhas** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
   texto_15h: "**Quando o relógio bate às três, todas as caveiras imitam chinês** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"

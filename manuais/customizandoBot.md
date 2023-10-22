@@ -2,11 +2,11 @@
 
 O arquivo `config.yml` tem algumas configurações do bot). O ideal é alterá-lo diretamente no GitHub, assim as mudanças ficam permanentes.
 
-1. Acesse o repositório do bot no GitHub e abra o arquivo `config.yml`: [https://github.com/dlucredio/MediaNocteLitteraeBot](https://github.com/dlucredio/MediaNocteLitteraeBot)
+1. Acesse o repositório do bot no GitHub e abra o arquivo `config.yml:
 
 ![config](./imagens/config.png "Arquivo de configuração do bot")
 
-2. Clique no botão de edição:
+2. Clique no botão de edição. Siga os comentários para entender o que cada configuração faz:
 
 ![configEdit](./imagens/configEdit.png "Editando arquivo de configuração do bot diretamente no GitHub")
 
