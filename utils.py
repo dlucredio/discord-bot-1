@@ -9,25 +9,26 @@ async def enviar_mensagem_com_reacao(bot, canal, texto, reacao):
         mensagem = await channel.send(texto)
         await mensagem.add_reaction(reacao)
 
-def criar_embed(cor, titulo, cargo, descricao, url_imagem, rodape):
-    embed = discord.Embed(color=cor, title=titulo, description="<@&"+cargo+">\n\n"+descricao)
+def criar_embed(cor, titulo, descricao, url_imagem, rodape):
+    embed = discord.Embed(color=cor, title=titulo, description=descricao)
     embed.set_image(url=url_imagem)
     embed.set_footer(text=rodape)
     return embed
 
-async def enviar_mensagem_embed(bot, canal, embed):
+async def enviar_mensagem_embed(bot, canal, cargo, embed):
     channel = bot.get_channel(canal)
     if not channel:
         raise Exception(f'Erro ao enviar mensagem com embed: canal {canal} não encontrado')
     else:
+        await channel.send(f"<@&{cargo}>")
         await channel.send(embed=embed)
 
-async def criar_thread_embed(bot, canal, embed, nome_thread, conteudo_thread):
+async def criar_thread_embed(bot, canal, cargo, embed, nome_thread, conteudo_thread):
     channel = bot.get_channel(canal)
     if not channel:
         raise Exception(f'Erro ao criar thread com embed: fórum {canal} não encontrado')
     else:
-        await channel.create_thread(name=nome_thread,embed=embed,content=conteudo_thread)
+        await channel.create_thread(name=nome_thread,embed=embed,content=f"<@&{cargo}> "+conteudo_thread)
 
 def ler_planilha_interativos(planilha, dia, mes):
     logging.info(f'Lendo planilha...')
@@ -56,8 +57,8 @@ def ler_planilha_interativos(planilha, dia, mes):
 async def postar_interativo(bot, canal, dados_postagem):
     logging.info(f'Criando postagem: {dados_postagem}')
 
-    embed=criar_embed(cor=dados_postagem['cor'], titulo=dados_postagem['titulo'], cargo=dados_postagem['cargo'], descricao=dados_postagem['descricao'], url_imagem=dados_postagem['url_imagem'], rodape=dados_postagem['rodape'])
+    embed=criar_embed(cor=dados_postagem['cor'], titulo=dados_postagem['titulo'], descricao=dados_postagem['descricao'], url_imagem=dados_postagem['url_imagem'], rodape=dados_postagem['rodape'])
     if dados_postagem['tipo'].startswith("m"):
-        await enviar_mensagem_embed(bot=bot, canal=canal, embed=embed)
+        await enviar_mensagem_embed(bot=bot, cargo=dados_postagem['cargo'], canal=canal, embed=embed)
     elif dados_postagem['tipo'].startswith("t"):
-        await criar_thread_embed(bot=bot, canal=canal, nome_thread=dados_postagem['nome_thread'], conteudo_thread=dados_postagem['conteudo_thread'], embed=embed)
+        await criar_thread_embed(bot=bot, canal=canal, cargo=dados_postagem['cargo'], nome_thread=dados_postagem['nome_thread'], conteudo_thread=dados_postagem['conteudo_thread'], embed=embed)
