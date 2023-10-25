@@ -131,6 +131,7 @@ async def preview_interativo(ctx, diaMes):
             gc = gspread.service_account(filename=interativos_programados['arquivo_credenciais'])
             planilha = gc.open_by_key(interativos_programados['id_planilha'])
             dados_postagem = ler_planilha_interativos(planilha=planilha, dia=dia, mes=mes)
+            dados_postagem['cargo'] = None # Assim não fica marcando nos previews
             canal_postagem = interativos_programados['canal_preview_mensagens']
             if dados_postagem['tipo'].startswith("t"):
                 canal_postagem = interativos_programados['canal_preview_forum']

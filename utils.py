@@ -20,7 +20,10 @@ async def enviar_mensagem_embed(bot, canal, cargo, embed):
     if not channel:
         raise Exception(f'Erro ao enviar mensagem com embed: canal {canal} não encontrado')
     else:
-        await channel.send(f"<@&{cargo}>")
+        if(cargo):
+            await channel.send(f"<@&{cargo}>")
+        else:
+            await channel.send("<Marcação do cargo>")
         await channel.send(embed=embed)
 
 async def criar_thread_embed(bot, canal, cargo, embed, nome_thread, conteudo_thread):
@@ -28,7 +31,10 @@ async def criar_thread_embed(bot, canal, cargo, embed, nome_thread, conteudo_thr
     if not channel:
         raise Exception(f'Erro ao criar thread com embed: fórum {canal} não encontrado')
     else:
-        await channel.create_thread(name=nome_thread,embed=embed,content=f"<@&{cargo}> "+conteudo_thread)
+        cargoStr = "<Marcação do cargo> "
+        if cargo:
+            cargoStr = f"<@&{cargo}> "
+        await channel.create_thread(name=nome_thread,embed=embed,content=cargoStr+conteudo_thread)
 
 def ler_planilha_interativos(planilha, dia, mes):
     logging.info(f'Lendo planilha...')
