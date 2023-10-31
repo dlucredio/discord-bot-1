@@ -50,10 +50,9 @@ bot = commands.Bot(command_prefix='$$', intents=intents)
                   datetime.time(hour=23)])
 async def mensagems_programadas():
     config_msg = config['mensagens_programadas']
-    diferenca_zonahoraria_utc = int(config_msg['diferenca_zonahoraria_utc'])
 
     now = datetime.datetime.now()
-    hora_local = now.hour + diferenca_zonahoraria_utc
+    hora_local = now.hour
 
     chave_mensagem = f'texto_{hora_local}h'
 
@@ -68,6 +67,7 @@ async def mensagems_programadas():
 # Vamos configurar a tarefa dos interativos recorrentes
 @tasks.loop(time=[datetime.time(hour=16, minute=30)])
 async def interativos_programados():
+    logging.info(f'Publicando interativos programados...')
     await publicar_hoje()
 
 @bot.event
