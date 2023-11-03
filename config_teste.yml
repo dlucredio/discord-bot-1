@@ -6,10 +6,16 @@ canal_comandos: 1165650503758270524
 
 # Configurações dos interativos programados
 interativos_programados:
+  # Horário para postar os interativos programados.
+  # Importante: tem que ser hora cheia, e sempre considerando
+  # o fuso horário de onde o bot está instalado
+  # Normalmente é meridiano de Greenwich, então precisa somar
+  # 3 horas em relação ao horário de Brasília
+  hora_postagem: 12 # Meio-dia no Brasil
   # Arquivo com as credenciais da planilha do google
   arquivo_credenciais: gspreadcredentials.json
   # Id da planilha do google
-  id_planilha: 1X5jQthT0-jQNm7DsdPeTh4kzk7e3tAhKP5afENpRgMc
+  id_planilha: 1-2IObxd5h5_2AdFKORSz1qZgXKnyeSkNOfV6vbHTv3o
   # Onde as mensagens de preview vão aparecer
   canal_preview_mensagens: 1165650503758270524
   # Onde as threads do fórum vão aparecer
@@ -17,12 +23,6 @@ interativos_programados:
 
 # Configurações das mensagens programadas
 mensagens_programadas:
-  # Dependendo de onde o bot vai estar hospedado, o fuso horário
-  # pode ser diferente.
-  # O sistema vai somar a diferença de zona horária
-  # Normalmente os sistemas consideram o fuso UTC (greenwich)
-  # Então o valor para o Brasil é -3
-  diferenca_zonahoraria_utc: -3
 
   # Canal das mensagens programadas
   canal: 1153050326040068197

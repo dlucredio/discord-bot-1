@@ -6,6 +6,12 @@ canal_comandos: 1165648745149505637
 
 # Configurações dos interativos programados
 interativos_programados:
+  # Horário para postar os interativos programados.
+  # Importante: tem que ser hora cheia, e sempre considerando
+  # o fuso horário de onde o bot está instalado
+  # Normalmente é meridiano de Greenwich, então precisa somar
+  # 3 horas em relação ao horário de Brasília
+  hora_postagem: 15 # Meio-dia no Brasil
   # Arquivo com as credenciais da planilha do google
   arquivo_credenciais: gspreadcredentials.json
   # Id da planilha do google

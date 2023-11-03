@@ -48,38 +48,46 @@ bot = commands.Bot(command_prefix='$$', intents=intents)
                   datetime.time(hour=21),
                   datetime.time(hour=22),
                   datetime.time(hour=23)])
-async def mensagems_programadas():
-    config_msg = config['mensagens_programadas']
-
+async def mensagens_programadas():
     now = datetime.datetime.now()
     hora_local = now.hour
+    try:
+        config_interativos = config['interativos_programados']
 
-    chave_mensagem = f'texto_{hora_local}h'
+        hora_interativos_programados = config_interativos['hora_postagem']
 
-    if not chave_mensagem in config_msg:
-        logging.info(f'Nenhuma mensagem configurada: {chave_mensagem}')
-    else:
-        logging.info(f'Postando mensagem configurada: {chave_mensagem}')
-        texto = config_msg[chave_mensagem]
+        if hora_local == hora_interativos_programados:
+            logging.info(f'Publicando interativos programados...')
+            await publicar_hoje()
+        else:
+            logging.info(f'Não há interativo programado para hora {hora_local}, apenas {hora_interativos_programados}')
 
-        await enviar_mensagem_com_reacao(bot, config_msg['canal'], texto, config_msg['emoji_reacao'])
+    except Exception as e:
+        logging.info(f'Exceção aconteceu durante postagem de interativo')
+        logging.exception(e)
 
-# Vamos configurar a tarefa dos interativos recorrentes
-@tasks.loop(time=[datetime.time(hour=16, minute=30)])
-async def interativos_programados():
-    logging.info(f'Publicando interativos programados...')
-    await publicar_hoje()
+    try:
+        config_msg = config['mensagens_programadas']
+        chave_mensagem = f'texto_{hora_local}h'
+
+        if not chave_mensagem in config_msg:
+            logging.info(f'Nenhuma mensagem configurada: {chave_mensagem}')
+        else:
+            logging.info(f'Postando mensagem configurada: {chave_mensagem}')
+            texto = config_msg[chave_mensagem]
+
+            await enviar_mensagem_com_reacao(bot, config_msg['canal'], texto, config_msg['emoji_reacao'])
+    except Exception as e:
+        logging.info(f'Exceção aconteceu durante postagem de mensagem programada')
+        logging.exception(e)
+
 
 @bot.event
 async def on_ready():
     logging.info(f'Bot logado como: {bot.user}')
-    if not mensagems_programadas.is_running():
-        mensagems_programadas.start()
+    if not mensagens_programadas.is_running():
+        mensagens_programadas.start()
         logging.info('Mensagem de hora em hora configurada')
-
-    if not interativos_programados.is_running():
-        interativos_programados.start()
-        logging.info('Interativos programados configurados')
 
 @bot.command()
 async def ping(ctx):
