@@ -1,0 +1,48 @@
+# Configurações do bot
+
+# Configurações gerais
+# Esse canal é onde o comandos serão executados. Não funciona em outro canal
+canal_comandos: 1165648745149505637
+
+# Configurações dos interativos programados
+interativos_programados:
+  # Horário para postar os interativos programados.
+  # Importante: tem que ser hora cheia, e sempre considerando
+  # o fuso horário de onde o bot está instalado
+  # Normalmente é meridiano de Greenwich, então precisa somar
+  # 3 horas em relação ao horário de Brasília
+  hora_postagem: 15 # Meio-dia no Brasil
+  # Arquivo com as credenciais da planilha do google
+  arquivo_credenciais: gspreadcredentials.json
+  # Id da planilha do google
+  id_planilha: 1X5jQthT0-jQNm7DsdPeTh4kzk7e3tAhKP5afENpRgMc
+  # Onde as mensagens de preview vão aparecer
+  canal_preview_mensagens: 1165648745149505637
+  # Onde as threads do fórum vão aparecer
+  canal_preview_forum: 1165648927169712189
+
+# Configurações das mensagens programadas
+mensagens_programadas:
+  # Canal das mensagens programadas
+  canal: 1153050326040068197
+
+  # Reação a ser adicionada às mensagens programadas
+  #emoji_reacao: "\U0001F480" # caveira
+  #emoji_reacao:  "\U0001F514" # sino 
+  emoji_reacao:  "\U00002615" # café
+
+  # Textos a serem exibidos de hora em hora.
+  # Caso não tenha, nada será postado
+  # Importante: o fuso horário deve ser UTC, ou seja, 3 horas a mais que o Brasil
+  # texto_16h: "**Quando o relógio bate à uma, todas as caveiras saem da tumba** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_17h: "**Quando o relógio bate às duas, todas as caveiras pintam as unhas** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_18h: "**Quando o relógio bate às três, todas as caveiras imitam chinês** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_19h: "**Quando o relógio bate às quatro, todas as caveiras tiram retrato** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_20h: "**Quando o relógio bate às cinco, todas as caveiras apertam os cintos** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_21h:  "**Quando o relógio bate às seis, todas as caveiras jogam xadrez** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_22h:  "**Quando o relógio bate às sete, todas as caveiras jogam basquete** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_23h:  "**Quando o relógio bate às oito, todas as caveiras comem biscoito** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_0h:  "**Quando o relógio bate às nove, todas as caveiras se sacodem** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_1h:  "**Quando o relógio bate às dez, todas as caveiras comem pasteis** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  # texto_2h:  "**Quando o relógio bate às onze, todas as caveiras sobem no bonde** \n_Tumbalacatumba tumba tá_\n_Tumbalacatumba tumba tá_"
+  texto_3h: "**É chegada a meia noite!** \n_Para quem é do dia, um bom descanso._\n_Para quem é da noite, pegue um café e continue por aqui!_"
